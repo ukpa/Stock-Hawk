@@ -5,17 +5,24 @@ import android.content.Context;
 import android.content.OperationApplicationException;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.RemoteException;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.GcmTaskService;
 import com.google.android.gms.gcm.TaskParams;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 import com.sam_chordas.android.stockhawk.rest.Utils;
+import com.sam_chordas.android.stockhawk.ui.MyStocksActivity;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
+import com.squareup.okhttp.internal.framed.FrameReader;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -32,8 +39,10 @@ public class StockTaskService extends GcmTaskService{
   private Context mContext;
   private StringBuilder mStoredSymbols = new StringBuilder();
   private boolean isUpdate;
+    public String stockname;
 
   public StockTaskService(){}
+
 
   public StockTaskService(Context context){
     mContext = context;
@@ -53,6 +62,7 @@ public class StockTaskService extends GcmTaskService{
     if (mContext == null){
       mContext = this;
     }
+      stockname = params.getExtras().getString("symbol");
     StringBuilder urlStringBuilder = new StringBuilder();
     try{
       // Base URL for the Yahoo query
@@ -129,9 +139,22 @@ public class StockTaskService extends GcmTaskService{
       } catch (IOException e){
         e.printStackTrace();
       }
+      catch (NumberFormatException e){
+          e.printStackTrace();
+          Handler handler = new Handler(Looper.getMainLooper());
+          handler.post(new Runnable() {
+              @Override
+              public void run() {
+                Toast.makeText(mContext,"Stock \'"+stockname+ "\' not found, Sorry! ",Toast.LENGTH_SHORT).show();
+              }
+          });
+
+
+      }
     }
 
     return result;
   }
+
 
 }
