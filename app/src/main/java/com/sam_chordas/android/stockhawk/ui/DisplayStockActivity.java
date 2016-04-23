@@ -1,13 +1,9 @@
 package com.sam_chordas.android.stockhawk.ui;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.sam_chordas.android.stockhawk.R;
@@ -83,7 +79,6 @@ public class DisplayStockActivity extends AppCompatActivity {
                                     getMediumDateFormat(getApplicationContext()).
                                     format(simpleDateFormat.parse(datapoint.getString("Date")));
                             lineSet.addPoint(new ValueLinePoint(date,Float.parseFloat(datapoint.getString("close"))));
-                            System.out.println(datapoint);
                             lineSet.setColor(0xFF56B7F1);
 
 
@@ -96,17 +91,33 @@ public class DisplayStockActivity extends AppCompatActivity {
                                 lineChartView.addSeries(lineSet);
                                 lineChartView.startAnimation();
                                 lineChartView.setIndicatorTextColor(Color.WHITE);
+                                date = (TextView)findViewById(R.id.stock_date_value);
+                                close = (TextView)findViewById(R.id.stock_close_value);
+                                high = (TextView) findViewById(R.id.stock_high_value);
+                                low = (TextView) findViewById(R.id.stock_low_value);
+                                open = (TextView)findViewById(R.id.stock_open_value);
+                                volume = (TextView)findViewById(R.id.stock_volume_value);;
+                                try{
+                                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+                                    String date_value =jsonArray.getJSONObject((jsonArray.length()+1)/2).getString("Date");
+                                    try{
+                                        date.setText(android.text.format.DateFormat.
+                                                getMediumDateFormat(getApplicationContext()).
+                                                format(simpleDateFormat.parse(date_value)));
+                                    }catch (ParseException p){}
+
+                                    close.setText(jsonArray.getJSONObject((jsonArray.length()+1)/2).getString("close"));
+                                    high.setText(jsonArray.getJSONObject((jsonArray.length()+1)/2).getString("high"));
+                                    low.setText(jsonArray.getJSONObject((jsonArray.length()+1)/2).getString("low"));
+                                    open.setText(jsonArray.getJSONObject((jsonArray.length()+1)/2).getString("open"));
+                                    volume.setText(jsonArray.getJSONObject((jsonArray.length()+1)/2).getString("volume"));
+                                }catch (JSONException e){}
+
 
                                 lineChartView.setOnPointFocusedListener(new IOnPointFocusedListener() {
                                     @Override
                                     public void onPointFocused(int _PointPos) {
-                                        String value="";
-                                        date = (TextView)findViewById(R.id.stock_date_value);
-                                        close = (TextView)findViewById(R.id.stock_close_value);
-                                        high = (TextView) findViewById(R.id.stock_high_value);
-                                        low = (TextView) findViewById(R.id.stock_low_value);
-                                        open = (TextView)findViewById(R.id.stock_open_value);
-                                        volume = (TextView)findViewById(R.id.stock_volume_value);;
+
 
                                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
                                         try{
@@ -122,8 +133,7 @@ public class DisplayStockActivity extends AppCompatActivity {
                                             low.setText(jsonArray.getJSONObject(_PointPos).getString("low"));
                                             open.setText(jsonArray.getJSONObject(_PointPos).getString("open"));
                                             volume.setText(jsonArray.getJSONObject(_PointPos).getString("volume"));
-                                        }catch (JSONException e){}
-                                        //stockDetail.setText(value);
+                                        }catch (JSONException e){e.printStackTrace();}
 
 
                                     }
@@ -131,15 +141,7 @@ public class DisplayStockActivity extends AppCompatActivity {
 
                             }
                         });
-
-
-
-
-
-
-
-
-                    }catch (Exception e){}
+               }catch (Exception e){}
                 }
 
 

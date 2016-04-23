@@ -62,7 +62,7 @@ public class StockTaskService extends GcmTaskService{
     if (mContext == null){
       mContext = this;
     }
-      stockname = params.getExtras().getString("symbol");
+      //stockname = params.getExtras().getString("symbol");
     StringBuilder urlStringBuilder = new StringBuilder();
     try{
       // Base URL for the Yahoo query
@@ -146,7 +146,7 @@ public class StockTaskService extends GcmTaskService{
           handler.post(new Runnable() {
               @Override
               public void run() {
-                Toast.makeText(mContext,"Stock \'"+stockname+ "\' not found, Sorry! ",Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Stock not found, Sorry! ",Toast.LENGTH_SHORT).show();
               }
           });
 
