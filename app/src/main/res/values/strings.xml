@@ -10,4 +10,18 @@
     <string name="input_hint">FB</string>
     <string name="input_prefill"></string>
     <string name="network_toast">Uh-oh! This app requires an internet connection</string>
+    <string name="stock_details_description">Stock Details</string>
+    <string name="stock_date">Date: </string>
+    <string name="stock_close_value">Close Value: </string>
+    <string name="stock_high_value">High Value: </string>
+    <string name="stock_low_value">Low Value: </string>
+    <string name="stock_open_value">Open Value: </string>
+    <string name="stock_volume">Volume: "</string>
+    <string name="stock_graph_description">stock graph</string>
+    <string name="stock_add_fab">add stock to the list</string>
+    <string name="stock_list_empty_view">Please connect to the internet to fetch stock list!</string>
+    <string name="stock_download_failure">Some error occured while downloading the data, we apologize for that!</string>
+    <string name="stock_details_connectivity_issue">"Please connect to the internet to know more about this stock!"</string>
+
+
 </resources>

@@ -9,13 +9,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/empty_stock_detail_view"
         android:visibility="gone"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:contentDescription="@string/stock_details_connectivity_issue"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="visible"
         android:id="@+id/detail_stock_texts"
+        android:padding="10dp"
+        android:contentDescription="@string/stock_details_description"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +32,7 @@
                 android:textSize="22sp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Date: "/>
+                android:text="@string/stock_date"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,7 +55,7 @@
                 android:id="@+id/stock_close"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Close Value: "/>
+                android:text="@string/stock_close_value"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,7 +78,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:id="@+id/stock_high"
-                android:text="High Value: "/>
+                android:text="@string/stock_high_value"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,7 +101,7 @@
                 android:gravity="center"
                 android:textSize="22sp"
                 android:id="@+id/stock_low"
-                android:text="Low Value: "/>
+                android:text="@string/stock_low_value"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,7 +123,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:id="@+id/stock_open"
-                android:text="Open Value: "/>
+                android:text="@string/stock_open_value"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -142,7 +145,7 @@
                 android:gravity="center"
                 android:id="@+id/stock_volume"
                 android:textSize="22sp"
-                android:text="Volume: "/>
+                android:text="@string/stock_volume"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -165,6 +168,7 @@
     <org.eazegraph.lib.charts.ValueLineChart
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/linechart"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:egUseCubic="true"
@@ -174,7 +178,8 @@
         app:egIndicatorLineColor="#FE6DA8"
         app:egLegendHeight="40dp"
         app:egShowStandardValue="true"
-        android:visibility="visible"/>
+        android:visibility="visible"
+        android:contentDescription="@string/stock_graph_description"/>
 
 
 </LinearLayout>

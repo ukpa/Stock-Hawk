@@ -95,6 +95,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                   System.out.println(position);
                   Intent i = new Intent(MyStocksActivity.this,DisplayStockActivity.class);
                   i.putExtra("stock",((TextView) (v.findViewById(R.id.stock_symbol))).getText().toString());
+
                   startActivity(i);
 
 
@@ -240,7 +241,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
       recyclerView.setVisibility(View.GONE);
       fab.setVisibility(View.GONE);
       emptyView.setVisibility(View.VISIBLE);
-      emptyView.setText("Please connect to the internet to fetch stock list!");
+      emptyView.setText(R.string.stock_list_empty_view);
 
 
 

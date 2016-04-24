@@ -68,7 +68,7 @@ public class DisplayStockActivity extends AppCompatActivity {
             linearLayout.setVisibility(View.GONE);
             lineChartView.setVisibility(View.GONE);
             emptyText.setVisibility(View.VISIBLE);
-            emptyText.setText("Please connect to the internet to know more about this stock!");
+            emptyText.setText(R.string.stock_details_connectivity_issue);
         }
 
 
@@ -86,7 +86,7 @@ public class DisplayStockActivity extends AppCompatActivity {
                 linearLayout.setVisibility(View.GONE);
                 lineChartView.setVisibility(View.GONE);
                 emptyText.setVisibility(View.VISIBLE);
-                emptyText.setText("Some error occured while downloading the data, we apologize for that!");
+                emptyText.setText(R.string.stock_download_failure);
 
             }
 
