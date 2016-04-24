@@ -28,6 +28,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.sam_chordas.android.stockhawk.R;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
+import com.sam_chordas.android.stockhawk.rest.CursorRecyclerViewAdapter;
 import com.sam_chordas.android.stockhawk.rest.QuoteCursorAdapter;
 import com.sam_chordas.android.stockhawk.rest.RecyclerViewItemClickListener;
 import com.sam_chordas.android.stockhawk.rest.Utils;
@@ -102,6 +103,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     recyclerView.setAdapter(mCursorAdapter);
 
 
+
     FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
     fab.attachToRecyclerView(recyclerView);
     fab.setOnClickListener(new View.OnClickListener() {
@@ -144,6 +146,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     mItemTouchHelper = new ItemTouchHelper(callback);
     mItemTouchHelper.attachToRecyclerView(recyclerView);
 
+
     mTitle = getTitle();
     if (isConnected){
       long period = 3600L;
@@ -163,7 +166,10 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
       // Schedule task with tag "periodic." This ensure that only the stocks present in the DB
       // are updated.
       GcmNetworkManager.getInstance(this).schedule(periodicTask);
+      Log.d("jkkajskajskajs",String.valueOf(mCursorAdapter.getItemCount()));
+
     }
+
   }
 
 
@@ -227,6 +233,24 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
   public void onLoadFinished(Loader<Cursor> loader, Cursor data){
     mCursorAdapter.swapCursor(data);
     mCursor = data;
+    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+    TextView emptyView = (TextView)findViewById(R.id.empty_list_view);
+    if(mCursor.getCount()==0){
+      recyclerView.setVisibility(View.GONE);
+      fab.setVisibility(View.GONE);
+      emptyView.setVisibility(View.VISIBLE);
+      emptyView.setText("Please connect to the internet to fetch stock list!");
+
+
+
+    }else{
+      recyclerView.setVisibility(View.VISIBLE);
+      fab.setVisibility(View.VISIBLE);
+      emptyView.setVisibility(View.GONE);
+
+    }
+
   }
 
   @Override

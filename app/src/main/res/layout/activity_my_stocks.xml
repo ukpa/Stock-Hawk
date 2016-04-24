@@ -1,10 +1,19 @@
 
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fab="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     >
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/empty_list_view"
+      android:visibility="gone"
+      android:gravity="center"
+      android:layout_margin="20dp"
+      android:textStyle="bold"/>
 
   <android.support.v7.widget.RecyclerView
       android:id="@+id/recycler_view"
@@ -28,4 +37,4 @@
       fab:layout_anchorGravity="bottom | end"
       />
 
-</FrameLayout>
+</LinearLayout>
