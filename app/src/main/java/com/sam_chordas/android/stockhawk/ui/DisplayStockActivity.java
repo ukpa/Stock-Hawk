@@ -42,6 +42,8 @@ public class DisplayStockActivity extends AppCompatActivity {
     TextView low;
     TextView open;
     TextView volume;
+    LinearLayout linearLayout;
+    TextView emptyText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +53,8 @@ public class DisplayStockActivity extends AppCompatActivity {
         Intent i = getIntent();
         String stock = i.getStringExtra("stock");
         boolean isConnected;
-        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.detail_stock_texts);
-        TextView emptyText = (TextView)findViewById(R.id.empty_stock_detail_view);
+        linearLayout = (LinearLayout)findViewById(R.id.detail_stock_texts);
+        emptyText = (TextView)findViewById(R.id.empty_stock_detail_view);
         ConnectivityManager cm =
                 (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -81,6 +83,10 @@ public class DisplayStockActivity extends AppCompatActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
+                linearLayout.setVisibility(View.GONE);
+                lineChartView.setVisibility(View.GONE);
+                emptyText.setVisibility(View.VISIBLE);
+                emptyText.setText("Some error occured while downloading the data, we apologize for that!");
 
             }
 
