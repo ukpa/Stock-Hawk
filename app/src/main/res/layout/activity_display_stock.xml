@@ -15,19 +15,27 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="visible"
-        android:id="@+id/detail_stock_texts">
+        android:id="@+id/detail_stock_texts"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_weight="2">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/stock_date"
+                android:textSize="22sp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="Date: "/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:id="@+id/stock_date_value"/>
 
         </LinearLayout>
@@ -35,15 +43,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_weight="2">
             <TextView
                 android:layout_width="wrap_content"
+                android:textSize="22sp"
                 android:layout_height="wrap_content"
                 android:id="@+id/stock_close"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="Close Value: "/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="22sp"
                 android:id="@+id/stock_close_value"/>
 
         </LinearLayout>
@@ -51,15 +66,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_weight="2">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:id="@+id/stock_high"
                 android:text="High Value: "/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="22sp"
                 android:id="@+id/stock_high_value"/>
 
         </LinearLayout>
@@ -67,30 +89,44 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_weight="2">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="22sp"
                 android:id="@+id/stock_low"
                 android:text="Low Value: "/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="22sp"
                 android:id="@+id/stock_low_value"/>
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_weight="2">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:id="@+id/stock_open"
                 android:text="Open Value: "/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="22sp"
                 android:id="@+id/stock_open_value"/>
 
         </LinearLayout>
@@ -98,19 +134,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
+            android:layout_weight="2">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:id="@+id/stock_volume"
+                android:textSize="22sp"
                 android:text="Volume: "/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="22sp"
                 android:id="@+id/stock_volume_value"/>
 
         </LinearLayout>
     </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#c0c0c0"
+        android:layout_margin="10dp"/>
 
 
 
