@@ -1,9 +1,14 @@
 package com.sam_chordas.android.stockhawk.ui;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sam_chordas.android.stockhawk.R;
@@ -19,6 +24,7 @@ import org.eazegraph.lib.models.ValueLineSeries;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -44,7 +50,26 @@ public class DisplayStockActivity extends AppCompatActivity {
         setContentView(R.layout.activity_display_stock);
         Intent i = getIntent();
         String stock = i.getStringExtra("stock");
-        downloadData(stock);
+        boolean isConnected;
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.detail_stock_texts);
+        TextView emptyText = (TextView)findViewById(R.id.empty_stock_detail_view);
+        ConnectivityManager cm =
+                (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        lineChartView = (ValueLineChart) findViewById(R.id.linechart);
+        if(isConnected){
+            downloadData(stock);
+        }else{
+            linearLayout.setVisibility(View.GONE);
+            lineChartView.setVisibility(View.GONE);
+            emptyText.setVisibility(View.VISIBLE);
+            emptyText.setText("Please connect to the internet to know more about this stock!");
+        }
+
+
 
     }
 
@@ -87,7 +112,7 @@ public class DisplayStockActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 DisplayStockActivity.this.setTitle(name);
-                                lineChartView = (ValueLineChart) findViewById(R.id.linechart);
+                                //lineChartView = (ValueLineChart) findViewById(R.id.linechart);
                                 lineChartView.addSeries(lineSet);
                                 lineChartView.startAnimation();
                                 lineChartView.setIndicatorTextColor(Color.WHITE);
