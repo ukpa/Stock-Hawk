@@ -206,9 +206,6 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     int id = item.getItemId();
 
     //noinspection SimplifiableIfStatement
-    if (id == R.id.action_settings) {
-      return true;
-    }
 
     if (id == R.id.action_change_units){
       // this is for changing stock changes from percent value to dollar value
@@ -237,7 +234,6 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
     FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
     TextView emptyView = (TextView)findViewById(R.id.empty_list_view);
-    Log.d("ma ki chut ", String.valueOf(mCursor.getCount()));
     if(mCursor.getCount()==0){
       recyclerView.setVisibility(View.GONE);
       fab.setVisibility(View.GONE);

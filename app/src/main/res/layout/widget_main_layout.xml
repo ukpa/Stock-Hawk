@@ -4,11 +4,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#000000"
     android:orientation="vertical"
+    android:id="@+id/main_widget_layout"
     >
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
+        android:text="STOCK HAWK - Touch here to learn more "
         android:textSize="22sp"
         android:gravity="center"
         android:layout_margin="15dp"/>
