@@ -143,6 +143,7 @@ public class StockTaskService extends GcmTaskService{
       catch (NumberFormatException e){
           e.printStackTrace();
           Handler handler = new Handler(Looper.getMainLooper());
+          final String message = e.getMessage();
           handler.post(new Runnable() {
               @Override
               public void run() {
