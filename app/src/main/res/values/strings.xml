@@ -22,6 +22,7 @@
     <string name="stock_list_empty_view">Please connect to the internet to fetch stock list!</string>
     <string name="stock_download_failure">Some error occured while downloading the data, we apologize for that!</string>
     <string name="stock_details_connectivity_issue">"Please connect to the internet to know more about this stock!"</string>
+    <string name="stock_exists">This stock is already saved!</string>
 
 
 </resources>

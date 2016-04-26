@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sam_chordas.android.stockhawk">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.gcm.demo.permission.C2D_MESSAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-        <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-        <uses-permission android:name="android.permission.WAKE_LOCK" />
+        android:theme="@style/AppTheme"
+        android:supportsRtl="true">
+
 
         <permission
             android:name="com.google.android.gcm.demo.permission.C2D_MESSAGE"
             android:protectionLevel="signature" />
 
-        <uses-permission android:name="com.google.android.gcm.demo.permission.C2D_MESSAGE" />
+
 
         <activity
             android:name=".ui.MyStocksActivity"
